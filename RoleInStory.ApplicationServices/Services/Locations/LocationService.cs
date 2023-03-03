@@ -20,7 +20,7 @@ namespace RoleInStory.Application.Services.Locations
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<List<LocationDto>> GetAllAsync()
+        public async Task<IReadOnlyList<LocationDto>> GetAllAsync()
         {
             List<Location> locations = await _dbContext.Locations.AsNoTracking().ToListAsync();
             return _mapper.Map<List<LocationDto>>(locations);

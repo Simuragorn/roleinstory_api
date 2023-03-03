@@ -5,9 +5,7 @@ using RoleInStory.Core.Entities;
 
 namespace RoleInStory.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LocationController : ControllerBase
+    public class LocationController : BaseAPIController
     {
         private readonly ILocationService _locationService;
 
@@ -17,7 +15,7 @@ namespace RoleInStory.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<LocationDto>>> GetAll()
+        public async Task<ActionResult<IReadOnlyList<LocationDto>>> GetAll()
         {
             var locations = await _locationService.GetAllAsync();
             return new OkObjectResult(locations);

@@ -4,6 +4,6 @@ namespace RoleInStory.Application.Services.Locations
 {
     public interface ILocationService
     {
-        Task<List<LocationDto>> GetAllAsync();
+        Task<IReadOnlyList<LocationDto>> GetAllAsync();
     }
 }

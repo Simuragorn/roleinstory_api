@@ -12,7 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\RoleInStory.ApplicationServices\RoleInStory.Application.csproj" />
+		<ProjectReference Include="..\RoleInStory.ApplicationServices\RoleInStory.Business.csproj" />
 		<ProjectReference Include="..\RoleInStory.Utils\RoleInStory.Utils.csproj" />
 	</ItemGroup>
 
