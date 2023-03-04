@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleInStory.Web", "RoleInSt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleInStory.Utils", "RoleInStory.Utils\RoleInStory.Utils.csproj", "{D08BCC57-40E3-4C8F-98FC-A7DA2217B1AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleInStory.Infrastructure", "RoleInStory.EntityFrameworkCore\RoleInStory.Infrastructure.csproj", "{2663425D-469E-44DA-B16C-B7FBD753821B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleInStory.Database", "RoleInStory.EntityFrameworkCore\RoleInStory.Database.csproj", "{2663425D-469E-44DA-B16C-B7FBD753821B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleInStory.Business", "RoleInStory.ApplicationServices\RoleInStory.Business.csproj", "{9362D0C4-34B0-45DE-980F-7A86AF924404}"
 EndProject

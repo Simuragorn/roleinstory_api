@@ -9,7 +9,7 @@ namespace RoleInStory.Web.Controllers
         [HttpGet("{code}")]
         public IActionResult Error(int code)
         {
-            return new ObjectResult(new APIResponse(code));
+            return new ObjectResult(new ApiResponse(code));
         }
     }
 }

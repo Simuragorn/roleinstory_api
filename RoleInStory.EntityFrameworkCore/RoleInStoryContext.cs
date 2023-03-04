@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RoleInStory.Core.Entities;
 using RoleInStory.Infrastructure.EntitiesConfigurations;
 
 namespace EntityFrameworkCore
 {
-    public class RoleInStoryContext : DbContext
+    public class RoleInStoryContext : IdentityDbContext<AppUser>
     {
         public DbSet<Location> Locations { get; set; }
 

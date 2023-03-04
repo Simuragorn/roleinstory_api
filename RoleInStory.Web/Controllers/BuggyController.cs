@@ -16,14 +16,14 @@ namespace RoleInStory.Web.Controllers
         [HttpGet("notfounderror")]
         public ActionResult GetNotFoundError()
         {
-            return NotFound(new APIResponse(404));
+            return NotFound(new ApiResponse(404));
         }
 
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
             Location location = null;
-            location.ImageUrl = "";
+            location.Name = "";
 
             return Ok();
         }

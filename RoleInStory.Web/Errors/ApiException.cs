@@ -1,6 +1,6 @@
 ﻿namespace RoleInStory.Web.Errors
 {
-    public class ApiException : APIResponse
+    public class ApiException : ApiResponse
     {
         public string Details { get; set; }
         public ApiException(int statusCode, string message = null, string details = null) : base(statusCode, message)

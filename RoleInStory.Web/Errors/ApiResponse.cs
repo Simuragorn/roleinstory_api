@@ -1,11 +1,11 @@
 ﻿namespace RoleInStory.Web.Errors
 {
-    public class APIResponse
+    public class ApiResponse
     {
         public int StatusCode { get; set; }
         public string Message { get; set; }
 
-        public APIResponse(int statusCode, string message = null)
+        public ApiResponse(int statusCode, string message = null)
         {
             StatusCode = statusCode;
             Message = message ?? GetDefaultMessage();

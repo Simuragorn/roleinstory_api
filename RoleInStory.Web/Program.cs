@@ -1,8 +1,10 @@
 using EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using RoleInStory.Application.Services.Locations;
+using RoleInStory.Core.Entities;
+using RoleInStory.Infrastructure.Seed;
+using RoleInStory.Web.Extensions;
 using RoleInStory.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +15,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<RoleInStoryContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddIdentityServices();
 
 builder.Services.AddScoped<ILocationService, LocationService>();
 
@@ -38,6 +40,9 @@ using (var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<RoleInStoryContext>();
         await context.Database.MigrateAsync();
+
+        var userManager = services.GetRequiredService<UserManager<AppUser>>();
+        await RoleInStoryDbContextSeed.SeedUsersAsync(userManager);
     }
     catch (SystemException ex)
     {

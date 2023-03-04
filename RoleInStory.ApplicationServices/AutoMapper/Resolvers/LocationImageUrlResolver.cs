@@ -20,10 +20,10 @@ namespace RoleInStory.Application.AutoMapper.Resolvers
 
         public string Resolve(Location source, LocationDto destination, string destMember, ResolutionContext context)
         {
-            if (!string.IsNullOrEmpty(source.ImageUrl))
-            {
-                //Condition
-            }
+            //if (!string.IsNullOrEmpty(source.ImageUrl))
+            //{
+            //    //Condition
+            //}
             return null;
         }
     }
