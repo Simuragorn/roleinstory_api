@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RoleInStory.Core.Entities;
 using RoleInStory.Web.Errors;
@@ -12,6 +13,14 @@ namespace RoleInStory.Web.Controllers
         {
             _dbContext = dbContext;
         }
+
+        [Authorize]
+        [HttpGet("testauth")]
+        public ActionResult<string> GetSecretText()
+        {
+            return "secret stuff";
+        }
+
 
         [HttpGet("notfounderror")]
         public ActionResult GetNotFoundError()

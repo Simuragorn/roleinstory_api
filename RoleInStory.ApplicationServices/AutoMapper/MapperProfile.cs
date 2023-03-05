@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RoleInStory.Application.AutoMapper.Resolvers;
 using RoleInStory.Application.Services.Locations.Dtos;
+using RoleInStory.Business.Dtos;
 using RoleInStory.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace RoleInStory.Application.AutoMapper
             CreateMap<Location, LocationDto>()
                 //.ForMember(d => d.ImageUrl, o => o.MapFrom<LocationImageUrlResolver>())
                 .ReverseMap();
+
+            CreateMap<AppUser, UserDto>().ReverseMap();
         }
     }
 }

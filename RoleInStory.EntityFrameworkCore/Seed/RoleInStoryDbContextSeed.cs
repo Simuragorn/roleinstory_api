@@ -12,9 +12,9 @@ namespace RoleInStory.Infrastructure.Seed
             {
                 var user = new AppUser
                 {
-                    DisplayName = "Bob",
-                    Email = "bob@test.com",
-                    UserName = "bob@test.com",
+                    DisplayName = "Zerg",
+                    Email = "zerg@test.com",
+                    UserName = "zerg@test.com",
                 };
 
                 await userManager.CreateAsync(user, "Pa$$w0rd");

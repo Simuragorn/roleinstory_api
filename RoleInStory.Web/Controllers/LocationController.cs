@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RoleInStory.Application.Services.Locations;
 using RoleInStory.Application.Services.Locations.Dtos;
-using RoleInStory.Core.Entities;
 
 namespace RoleInStory.Web.Controllers
 {

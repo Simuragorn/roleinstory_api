@@ -1,6 +1,7 @@
 using EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RoleInStory.Application.AutoMapper;
 using RoleInStory.Application.Services.Locations;
 using RoleInStory.Core.Entities;
 using RoleInStory.Infrastructure.Seed;
@@ -14,10 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<RoleInStoryContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddIdentityServices();
+builder.Services.AddAutoMapper(m =>
+{
+    m.AddProfile<MapperProfile>();
+});
+builder.Services.AddIdentityServices(builder.Configuration);
 
-builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddApplicationServices();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -63,6 +67,7 @@ app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
