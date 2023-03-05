@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RoleInStory.Application.Services.Locations;
 using RoleInStory.Application.Services.Locations.Dtos;
 
 namespace RoleInStory.Web.Controllers
 {
-    public class LocationController : BaseAPIController
+    [Authorize]
+    public class LocationController : BaseApiController
     {
         private readonly ILocationService _locationService;
 
@@ -13,17 +15,17 @@ namespace RoleInStory.Web.Controllers
             _locationService = locationService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<LocationDto>>> GetAll()
-        {
-            var locations = await _locationService.GetAllAsync();
-            return new OkObjectResult(locations);
-        }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public async Task<ActionResult<List<LocationDto>>> GetAll()
         {
-            return "value";
+            return await _locationService.GetAllAsync();
+        }
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<LocationDto>> Get(int id)
+        {
+            return await _locationService.GetAsync(id);
         }
 
         [HttpPost]
@@ -35,12 +37,14 @@ namespace RoleInStory.Web.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<LocationDto>> Put(int id, [FromBody] LocationDto location)
         {
+            location.Id = id;
             return await _locationService.UpdateAsync(location);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<LocationDto>> Delete(int id)
         {
+            return await _locationService.DeleteAsync(id);
         }
 
     }

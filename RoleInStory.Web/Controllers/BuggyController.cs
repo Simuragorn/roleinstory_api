@@ -6,7 +6,7 @@ using RoleInStory.Web.Errors;
 
 namespace RoleInStory.Web.Controllers
 {
-    public class BuggyController : BaseAPIController
+    public class BuggyController : BaseApiController
     {
         private readonly RoleInStoryContext _dbContext;
         public BuggyController(RoleInStoryContext dbContext)

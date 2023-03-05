@@ -4,7 +4,7 @@ using RoleInStory.Web.Errors;
 namespace RoleInStory.Web.Controllers
 {
     [Route("errors")]
-    public class ErrorController : BaseAPIController
+    public class ErrorController : BaseApiController
     {
         [HttpGet("{code}")]
         public IActionResult Error(int code)

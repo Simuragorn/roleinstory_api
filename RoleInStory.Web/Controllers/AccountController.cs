@@ -10,7 +10,7 @@ using System.Security.Claims;
 
 namespace RoleInStory.Web.Controllers
 {
-    public class AccountController : BaseAPIController
+    public class AccountController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;

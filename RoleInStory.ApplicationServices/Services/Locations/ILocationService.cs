@@ -1,12 +1,10 @@
 ﻿using RoleInStory.Application.Services.Locations.Dtos;
+using RoleInStory.Business.Services.BaseService;
+using RoleInStory.Core.Entities;
 
 namespace RoleInStory.Application.Services.Locations
 {
-    public interface ILocationService
+    public interface ILocationService : IGeneralService<Location, LocationDto>
     {
-        Task<IReadOnlyList<LocationDto>> GetAllAsync();
-
-        Task<LocationDto> CreateAsync(LocationDto locationDto);
-        Task<LocationDto> UpdateAsync(LocationDto locationDto);
     }
 }
