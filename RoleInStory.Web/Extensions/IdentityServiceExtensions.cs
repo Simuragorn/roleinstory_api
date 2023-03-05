@@ -1,9 +1,9 @@
 ﻿using EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using RoleInStory.Core.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using RoleInStory.Core.Entities.Identity;
 
 namespace RoleInStory.Web.Extensions
 {

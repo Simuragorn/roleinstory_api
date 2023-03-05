@@ -20,10 +20,32 @@ namespace RoleInStory.Application.Services.Locations
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
         public async Task<IReadOnlyList<LocationDto>> GetAllAsync()
         {
             List<Location> locations = await _dbContext.Locations.AsNoTracking().ToListAsync();
             return _mapper.Map<List<LocationDto>>(locations);
+        }
+
+        public async Task<LocationDto> CreateAsync(LocationDto locationDto)
+        {
+            Location location = _mapper.Map<Location>(locationDto);
+            var addedLocation = await _dbContext.Locations.AddAsync(location);
+            await _dbContext.SaveChangesAsync();
+            return _mapper.Map<LocationDto>(addedLocation.Entity);
+        }
+
+        public async Task<LocationDto> UpdateAsync(LocationDto location)
+        {
+            Location existingLocation = await _dbContext.Locations.FirstOrDefaultAsync(l => l.Id == location.Id);
+            if (existingLocation == null)
+            {
+                throw new Exception("Location does not exist");
+            }
+            existingLocation = _mapper.Map(location, existingLocation);
+            var updatedLocation = _dbContext.Locations.Update(existingLocation);
+            await _dbContext.SaveChangesAsync();
+            return _mapper.Map<LocationDto>(updatedLocation.Entity);
         }
     }
 }

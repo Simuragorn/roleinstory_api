@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RoleInStory.Application.AutoMapper;
 using RoleInStory.Application.Services.Locations;
-using RoleInStory.Core.Entities;
+using RoleInStory.Core.Entities.Identity;
 using RoleInStory.Infrastructure.Seed;
 using RoleInStory.Web.Extensions;
 using RoleInStory.Web.Middlewares;

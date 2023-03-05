@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RoleInStory.Business.Dtos;
 using RoleInStory.Business.Services.Auth;
-using RoleInStory.Core.Entities;
+using RoleInStory.Core.Entities.Identity;
 using RoleInStory.Web.Errors;
 using System.Security.Claims;
 
@@ -36,12 +36,6 @@ namespace RoleInStory.Web.Controllers
             return userDto;
         }
 
-        [HttpGet("emailexists")]
-        public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
-        {
-            return await _userManager.FindByEmailAsync(email) != null;
-        }
-
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -63,6 +57,12 @@ namespace RoleInStory.Web.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
+            bool emailExists = await CheckEmailExistsAsync(registerDto.Email);
+            if (emailExists)
+            {
+                return new BadRequestObjectResult(new ApiException(400, "Email address is in use"));
+            }
+
             var user = new AppUser { DisplayName = registerDto.DisplayName, Email = registerDto.Email, UserName = registerDto.Email };
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded)
@@ -73,6 +73,11 @@ namespace RoleInStory.Web.Controllers
             var userDto = _mapper.Map<UserDto>(user);
             userDto.Token = _tokenService.CreateToken(user);
             return userDto;
+        }
+
+        private async Task<bool> CheckEmailExistsAsync(string email)
+        {
+            return await _userManager.FindByEmailAsync(email) != null;
         }
     }
 }

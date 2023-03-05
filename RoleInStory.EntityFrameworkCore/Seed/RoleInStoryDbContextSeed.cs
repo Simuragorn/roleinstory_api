@@ -1,6 +1,6 @@
 ﻿using EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using RoleInStory.Core.Entities;
+using RoleInStory.Core.Entities.Identity;
 
 namespace RoleInStory.Infrastructure.Seed
 {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RoleInStory.Core.Entities;
+using RoleInStory.Core.Entities.Identity;
 using RoleInStory.Infrastructure.EntitiesConfigurations;
 
 namespace EntityFrameworkCore

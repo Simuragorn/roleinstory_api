@@ -27,13 +27,15 @@ namespace RoleInStory.Web.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<LocationDto>> Post([FromBody] LocationDto location)
         {
+            return await _locationService.CreateAsync(location);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<LocationDto>> Put(int id, [FromBody] LocationDto location)
         {
+            return await _locationService.UpdateAsync(location);
         }
 
         [HttpDelete("{id}")]
